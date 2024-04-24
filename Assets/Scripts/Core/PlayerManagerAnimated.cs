@@ -125,7 +125,7 @@ public class PlayerManagerAnimated : MonoBehaviour
             movement = Vector2.up * movement.normalized.y;
         }
 		
-		QuitGame();
+
     }
 
 	void FixedUpdate() {
