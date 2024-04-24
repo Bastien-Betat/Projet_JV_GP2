@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character Animated Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7558360764163165843, guid: c645055b3332f9c4db776ff49b792d76, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5621234150465771956, guid: c645055b3332f9c4db776ff49b792d76, type: 3}
     m_RemovedGameObjects: []
