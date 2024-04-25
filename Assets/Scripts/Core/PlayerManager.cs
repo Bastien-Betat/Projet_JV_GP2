@@ -31,6 +31,7 @@ public class PlayerManager : MonoBehaviour
 	}
 	
 	
+	
 	[SerializeField] private HUD hud; //on joint le hud du canvas
 	[SerializeField] private AudioManager audioManager; 
 	
