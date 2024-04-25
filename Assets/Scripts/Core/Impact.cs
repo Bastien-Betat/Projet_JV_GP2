@@ -13,6 +13,12 @@ public class Impact : MonoBehaviour
 		//Si l'obstacle entre en collision avec le joueur (objet avec le tag "Player")
         if (col.gameObject.tag == "Player") {
 			
+			  Healthmanager.health--;
+                if(Healthmanager.health <= 0) {
+                    Debug.Log("quit game");
+                }
+			
+			
 			//S'il faut réinitialiser des obstacles lorsqu'on perd, uniquement s'il y a un tableauReinit
 			if(tableauReinit != null){
 				tableauReinit.Reinit();
