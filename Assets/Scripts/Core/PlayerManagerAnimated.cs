@@ -10,9 +10,7 @@ public class PlayerManagerAnimated : MonoBehaviour
 
 	public static PlayerManagerAnimated instance;
 	public static GameObject player;
-	public Weapon weapon;
 
-	Vector2 mousePosition;
 	
 	void Awake(){
 		if(instance == null){
@@ -87,12 +85,7 @@ public class PlayerManagerAnimated : MonoBehaviour
 
 		// Fonction qui se lance à chaque frame.
 		void Update() {
-			if(Input.GetMouseButtonDown(0))
-			{
-				weapon.Fire();
-			}
-
-			mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			
 
 			//On récupère si les touches de directions horizontales et verticales sont pressées, cela donne un nombre entre 0 (pas pressé) et 1 (pressé).
 			movement.x = Input.GetAxisRaw("Horizontal");
@@ -139,10 +132,6 @@ public class PlayerManagerAnimated : MonoBehaviour
 
 void FixedUpdate()
 {
-    Vector2 aimDirection = mousePosition - _rb.position;
-    float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
-    _rb.rotation = aimAngle;
-
 		//Si le chronomètre n'est pas arrêté, on ajoute le laps de temps écoulé au chronomètre et on actualise le HUD
 		if(!endTimer){
 			timerGame += Time.fixedDeltaTime;
