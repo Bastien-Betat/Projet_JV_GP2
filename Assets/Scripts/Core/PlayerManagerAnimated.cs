@@ -10,6 +10,7 @@ public class PlayerManagerAnimated : MonoBehaviour
 
 	public static PlayerManagerAnimated instance;
 	public static GameObject player;
+
 	
 	void Awake(){
 		if(instance == null){
@@ -85,12 +86,13 @@ public class PlayerManagerAnimated : MonoBehaviour
 		// Fonction qui se lance à chaque frame.
 		void Update() {
 			
+
 			//On récupère si les touches de directions horizontales et verticales sont pressées, cela donne un nombre entre 0 (pas pressé) et 1 (pressé).
 			movement.x = Input.GetAxisRaw("Horizontal");
 			movement.y = Input.GetAxisRaw("Vertical");
 			
 			if(movement != Vector2.zero){ //Si le joueur bouge, on partage les variables à l'animator pour qu'il bouge le sprite en conséquence
-				animator.SetFloat("moveX", movement.x);
+				animator.SetFloat("moveX", movement.x); 
 				animator.SetFloat("moveY", movement.y);
 				animator.SetBool("moving", true);
 			} else {
@@ -128,8 +130,8 @@ public class PlayerManagerAnimated : MonoBehaviour
 			QuitGame();
 		}
 
-	void FixedUpdate() {
-		
+void FixedUpdate()
+{
 		//Si le chronomètre n'est pas arrêté, on ajoute le laps de temps écoulé au chronomètre et on actualise le HUD
 		if(!endTimer){
 			timerGame += Time.fixedDeltaTime;
@@ -138,17 +140,15 @@ public class PlayerManagerAnimated : MonoBehaviour
 			}
 		}
 		
-		//Si le personnage est gelé, (si la variable freeze est supérieure à 0), on diminue la variable freeze du laps de temps écoulé, mesuré par Time.fixedDeltaTime).
-		if(freeze > 0){
-			freeze = Mathf.Max(0, freeze - Time.fixedDeltaTime);
-		}
-		//Si freeze vaut 0, le personnage n'est pas gelé. On le déplace via son rigidbody d'une valeur égale à sa position + le vecteur mouvement défini dans Update * la vitesse moveSpeed * le laps de temps écoulé Time.fixedDeltaTime)
-		else
-		{
-			_rb.MovePosition(_rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-		}
-
-	}
+		 if (freeze > 0)
+    {
+        freeze = Mathf.Max(0, freeze - Time.fixedDeltaTime);
+    }
+    else
+    {
+        _rb.MovePosition(_rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+    }
+}
 	
 	//Fonction qui ferme le jeu (seulement lorsque le jeu est build)
 	public void QuitGame()
